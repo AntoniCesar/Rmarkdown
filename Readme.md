@@ -1,7 +1,7 @@
-6 EJERCICIOS
+6 EJERCICIO
 ================
 
-## 6.1 PARTE 1
+## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax
 for authoring HTML, PDF, and MS Word documents. For more details on
@@ -31,3 +31,30 @@ You can also embed plots, for example:
 
 Note that the `echo = FALSE` parameter was added to the code chunk to
 prevent printing of the R code that generated the plot.
+
+***2.Realizar las siguientes sumas***
+
+a . 1 + 2 + 3 + ……. + 1000
+
+``` r
+suma01 <- c(0:1000)
+sum(suma01)
+```
+
+    ## [1] 500500
+
+b . 1 + 2 + 4 + 8 + 16 + ….. + 1024
+
+``` r
+i <- NULL; aux <- NULL; r <- NULL
+for (i in 0:10) {
+  aux <- 2^i; r <- c(r, aux)}
+sum(r)
+```
+
+    ## [1] 2047
+
+***3.El vector grupo representa el grupo al que pertenece una serie de
+alumnos***
+
+a . ¿Cuántos elementos tiene?

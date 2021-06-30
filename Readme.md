@@ -58,3 +58,18 @@ sum(r)
 alumnos***
 
 a . ¿Cuántos elementos tiene?
+
+*primero cargamos el archivo*
+
+``` r
+load("ei1012-1516-la-s1-datos.Rdata")
+```
+
+*convertimos a data frame*
+
+``` r
+dfclase <- data.frame(grupo, nota)
+dfclase
+```
+
+*obeservamos la cantidad de elementos que tiene con length*

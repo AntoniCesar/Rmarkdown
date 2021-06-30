@@ -9,3 +9,7 @@ for (i in 0:10) {
 dfclase <- data.frame(grupo, nota)
 dfclase
 
+load("ei1012-1516-la-s1-datos.Rdata")
+length(dfclase$grupo)
+1 + 2
+

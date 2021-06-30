@@ -69,7 +69,52 @@ load("ei1012-1516-la-s1-datos.Rdata")
 
 ``` r
 dfclase <- data.frame(grupo, nota)
-dfclase
+head(dfclase)
 ```
 
+    ##   grupo nota
+    ## 1     B  4.9
+    ## 2     A  5.4
+    ## 3     E  5.2
+    ## 4     D  6.8
+    ## 5     B  5.0
+    ## 6     D  6.2
+
 *obeservamos la cantidad de elementos que tiene con length*
+
+``` r
+length(dfclase$grupo)
+```
+
+    ## [1] 192
+
+b . ¿En que posiciones del vector está la letra “A”?
+
+*Obervamos la posición con la función “which”*
+
+``` r
+which(dfclase$grupo == "A")
+```
+
+    ##  [1]   2   8  17  21  28  84 101 108 111 115 123 136 190 192
+
+***4. El vector nota representa la nota de un examen de los alumnos que
+están en los grupos del vector grupo.***
+
+a . ¿Cuanto suman todas las notas?
+
+``` r
+sum(dfclase$nota)
+```
+
+    ## [1] 962
+
+b . ¿Cual es la media aritmética de todas las notas?
+
+``` r
+mean(dfclase$nota)
+```
+
+    ## [1] 5.010417
+
+c . ¿En qué posiciones están las notas mayores de 7.0?

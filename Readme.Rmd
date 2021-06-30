@@ -51,15 +51,33 @@ a . ¿Cuántos elementos tiene?
 load("ei1012-1516-la-s1-datos.Rdata")
 ```
 *convertimos a data frame*
-```{r eval=FALSE}
+```{r}
 dfclase <- data.frame(grupo, nota)
-dfclase
+head(dfclase)
 ```
 *obeservamos la cantidad de elementos que tiene con length*
 
 ```{r}
 length(dfclase$grupo)
 ```
+b .  ¿En que posiciones del vector está la letra "A"?
+
+*Obervamos la posición con la función "which"*
+```{r}
+which(dfclase$grupo == "A")
+```
 
 
+***4. El vector nota representa la nota de un examen de los alumnos que están en los grupos del vector grupo.***
 
+a . ¿Cuanto suman todas las notas?
+
+```{r}
+sum(dfclase$nota)
+```
+b . ¿Cual es la media aritmética de todas las notas?
+
+```{r}
+mean(dfclase$nota)
+```
+c . ¿En qué posiciones están las notas mayores de 7.0?

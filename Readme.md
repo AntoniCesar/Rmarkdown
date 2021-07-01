@@ -118,3 +118,113 @@ mean(dfclase$nota)
     ## [1] 5.010417
 
 c . ¿En qué posiciones están las notas mayores de 7.0?
+
+``` r
+which(dfclase$nota > 7)
+```
+
+    ## [1]  81 103 120 151
+
+d . Visualiza las notas ordenadas de mayor a menor
+
+``` r
+Notdec <- sort(dfclase$nota,decreasing = TRUE)
+head(Notdec)
+```
+
+    ## [1] 7.7 7.5 7.4 7.2 7.0 6.9
+
+e . ¿En qué posición está la nota máxima?
+
+``` r
+which.max(dfclase$nota)
+```
+
+    ## [1] 120
+
+***5. A partir de los vectores grupo y nota definidos.***
+
+a . Suma las notas de los 10 primeros alumnos del vector
+
+``` r
+notas10p <- dfclase$nota[1:10]
+sum(notas10p)
+```
+
+    ## [1] 51.8
+
+b . ¿Cuántos alumnos hay del grupo C?
+
+``` r
+grupoc <- dplyr::filter(dfclase, dfclase$grupo == "C")
+length(grupoc$grupo)
+```
+
+    ## [1] 39
+
+c . ¿Cuántos alumnos han aprobado?
+
+``` r
+aprobados <- dplyr::filter(dfclase, dfclase$nota > 10.5)
+length(aprobados$nota)
+```
+
+    ## [1] 0
+
+***6. Calcula el percentil 66 de las notas de todos los alumnos, y
+también de los alumnos del grupo C.***
+
+1.  Percentil de todos los alumnos
+
+<!-- end list -->
+
+``` r
+percentil <- quantile(dfclase$nota, 66/100)
+percentil
+```
+
+    ## 66% 
+    ## 5.5
+
+2.  Percentil de todos los alumnos del grupo C
+
+<!-- end list -->
+
+``` r
+per66C <- quantile(grupoc$nota, 66/100)
+per66C
+```
+
+    ##   66% 
+    ## 5.808
+
+***7. Un alumno tiene una nota de 4.9. ¿Qué porcentaje, del total de
+alumnos, tiene una nota menor o igual que la suya? ¿Y qué porcentaje
+tiene una nota mayor o igual que la suya?***
+
+a . porcentaje de alummnos que tiene nota menor o igual a 4.9
+
+``` r
+menor4.9 <- dplyr::filter(dfclase, dfclase$nota <= 4.9)
+(length(menor4.9$nota)/length(dfclase$nota))*100
+```
+
+    ## [1] 46.875
+
+b . porcentaje de alummnos que tiene nota mayor o igual a 4.9
+
+``` r
+mayor4.9 <- dplyr::filter(dfclase, dfclase$nota >= 4.9)
+(length(mayor4.9$nota)/length(dfclase$nota))*100
+```
+
+    ## [1] 56.25
+
+***8. Realiza el gráfico de diagramas de caja de las notas de cada
+grupo, para poder comparar el nivel de cada uno de ellos.***
+
+``` r
+boxplot(`nota` ~ `grupo`, dfclase, col = palette(rainbow(2)))
+```
+
+![](Readme_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->

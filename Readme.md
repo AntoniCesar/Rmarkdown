@@ -1,6 +1,14 @@
 6 EJERCICIO
 ================
 
+***1.Calcula los valores numéricos aproximados de***
+
+``` r
+(0.3*0.15)/((0.3*0.15)+(0.2*0.8)+(0.5*0.12)) #a
+```
+
+    ## [1] 0.1698113
+
 ***2.Realizar las siguientes sumas***
 
 a . 1 + 2 + 3 + ……. + 1000
@@ -182,8 +190,6 @@ también de los alumnos del grupo C.***
 
 1.  Percentil de todos los alumnos
 
-<!-- end list -->
-
 ``` r
 percentil <- quantile(dfclase$nota, 66/100)
 percentil
@@ -193,8 +199,6 @@ percentil
     ## 5.5
 
 2.  Percentil de todos los alumnos del grupo C
-
-<!-- end list -->
 
 ``` r
 per66C <- quantile(grupoc$nota, 66/100)
@@ -233,7 +237,7 @@ grupo, para poder comparar el nivel de cada uno de ellos.***
 boxplot(`nota` ~ `grupo`, dfclase, col = palette(rainbow(2)))
 ```
 
-![](Readme_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](Readme_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
 
 ***9. Si la variable conc recoge la concentración de plomo (en ppm) en
 el aire de cierta zona durante un día completo***

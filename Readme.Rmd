@@ -201,3 +201,12 @@ ascendentecon[1:10]
 ```{r}
 (A <- matrix(c(1:4, seq(2,8,by = 2),seq(3,12,by = 3)), nrow = 4, ncol = 3))
 ```
+***2.4 Crea una función que cree una matriz nula ingresando las dimensiones***
+```{r}
+matriz_nula <- function(filas,columnas){ 
+  matrix(0 , nrow = filas ,ncol = columnas) 
+}
+matriz_nula(2,3)
+matriz_nula(5,5)
+matriz_nula(2,6)
+```

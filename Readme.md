@@ -295,3 +295,36 @@ un plano utilizando RStudio***
     ## [2,]    2    4    6
     ## [3,]    3    6    9
     ## [4,]    4    8   12
+
+***2.4 Crea una función que cree una matriz nula ingresando las
+dimensiones***
+
+``` r
+matriz_nula <- function(filas,columnas){ 
+  matrix(0 , nrow = filas ,ncol = columnas) 
+}
+matriz_nula(2,3)
+```
+
+    ##      [,1] [,2] [,3]
+    ## [1,]    0    0    0
+    ## [2,]    0    0    0
+
+``` r
+matriz_nula(5,5)
+```
+
+    ##      [,1] [,2] [,3] [,4] [,5]
+    ## [1,]    0    0    0    0    0
+    ## [2,]    0    0    0    0    0
+    ## [3,]    0    0    0    0    0
+    ## [4,]    0    0    0    0    0
+    ## [5,]    0    0    0    0    0
+
+``` r
+matriz_nula(2,6)
+```
+
+    ##      [,1] [,2] [,3] [,4] [,5] [,6]
+    ## [1,]    0    0    0    0    0    0
+    ## [2,]    0    0    0    0    0    0

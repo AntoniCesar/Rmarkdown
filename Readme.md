@@ -276,3 +276,9 @@ ascendentecon[1:10]
 ```
 
     ##  [1] 0.93 1.07 1.77 2.03 2.58 2.73 2.75 2.88 2.88 2.91
+
+### EJERCICIOS PARTE 2
+
+***2.1. Graficar los puntos
+(1,1),(2,4),(3,6),(4,8),(5,25),(6,36),(7,49),(8,61),(9,81),(10,100) en
+un plano utilizando RStudio***

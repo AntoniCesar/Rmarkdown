@@ -386,7 +386,48 @@ x(P,6)
     ## [2,]  -464 -2416 -1344
     ## [3,]  -648   440  -912
 
-***12. Considere β =((Xt.X)^-1).Xt.Y*** ***Determine la matriz β***
+***2.10 Utilizando la ayuda de R, investigue para que sirven las
+funciones eigen() y det() ***
+
+*La función eigen() sirve para calcular valores y vectores propios de
+una matriz. Esos vectores propios o eigen vectores son los que despues
+de ser multiplicados por una matriz cuadrada modifican su magnitud pero
+no su dirección,asi mismo los eigen valores cambian los valores de los
+eigen vectores.* *La función det() permite calcular el determinante de
+una matriz cuadrada.* *Ejemplo:*
+
+``` r
+(M<- matrix(24:39, nrow=4, ncol=4))
+```
+
+    ##      [,1] [,2] [,3] [,4]
+    ## [1,]   24   28   32   36
+    ## [2,]   25   29   33   37
+    ## [3,]   26   30   34   38
+    ## [4,]   27   31   35   39
+
+``` r
+(eigen(M))
+```
+
+    ## eigen() decomposition
+    ## $values
+    ## [1]  1.266318e+02 -6.317531e-01 -3.585516e-15 -8.269738e-16
+    ## 
+    ## $vectors
+    ##            [,1]       [,2]       [,3]        [,4]
+    ## [1,] -0.4760125  0.7341634  0.1359768 -0.05222797
+    ## [2,] -0.4917965  0.2913463  0.2141652  0.47602534
+    ## [3,] -0.5075805 -0.1514708 -0.8362608 -0.79536677
+    ## [4,] -0.5233645 -0.5942879  0.4861188  0.37156940
+
+``` r
+(det(M))
+```
+
+    ## [1] 1.490947e-28
+
+***2.12. Considere β =((Xt.X)^-1).Xt.Y*** ***Determine la matriz β***
 
 ``` r
 (X <- matrix(c(rep(1,5),1,-1,0,1,2),nrow = 5,ncol = 2))

@@ -328,3 +328,16 @@ matriz_nula(2,6)
     ##      [,1] [,2] [,3] [,4] [,5] [,6]
     ## [1,]    0    0    0    0    0    0
     ## [2,]    0    0    0    0    0    0
+
+***2.6 Obtener la matriz transpuesta de A (ejercicio 2)***
+
+``` r
+(Transpuesta_A <- t(A))
+```
+
+    ##      [,1] [,2] [,3] [,4]
+    ## [1,]    1    2    3    4
+    ## [2,]    2    4    6    8
+    ## [3,]    3    6    9   12
+
+### EJERCICIOS PARTE 3

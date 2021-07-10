@@ -210,3 +210,10 @@ matriz_nula(2,3)
 matriz_nula(5,5)
 matriz_nula(2,6)
 ```
+***2.6 Obtener la matriz transpuesta de A (ejercicio 2)***
+```{r}
+(Transpuesta_A <- t(A))
+```
+
+
+### EJERCICIOS PARTE 3

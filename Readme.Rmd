@@ -238,7 +238,7 @@ x <- function(P,n){
 #Consulta
 x(P,6)
 ```
-***2.10 Utilizando la ayuda de R, investigue para que sirven las funciones eigen() y det() ***
+***2.10 Utilizando la ayuda de R, investigue para que sirven las funciones eigen() y det()***
 
   *La función eigen() sirve para calcular valores y vectores propios de una matriz. Esos vectores propios o eigen vectores son los que despues de ser multiplicados por una matriz cuadrada modifican su magnitud pero no su dirección,asi mismo los eigen valores cambian los valores de los eigen vectores.*
   *La función det() permite calcular el determinante de una matriz cuadrada.*

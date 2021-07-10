@@ -387,7 +387,7 @@ x(P,6)
     ## [3,]  -648   440  -912
 
 ***2.10 Utilizando la ayuda de R, investigue para que sirven las
-funciones eigen() y det() ***
+funciones eigen() y det()***
 
 *La función eigen() sirve para calcular valores y vectores propios de
 una matriz. Esos vectores propios o eigen vectores son los que despues

@@ -196,6 +196,11 @@ ascendentecon[1:10]
 ### EJERCICIOS PARTE 2
 
 ***2.1. Graficar los puntos (1,1),(2,4),(3,6),(4,8),(5,25),(6,36),(7,49),(8,61),(9,81),(10,100) en un plano utilizando RStudio***
+```{r}
+x<-c(1,2,3,4,5,6,7,8,9,10)
+y<-c(1,4,9,16,25,36,49,64,81,100)
+plot(x,y, main = "Gráfica de Puntos", col = "green", pch = 16,)
+```
 
 ***2.2 Ingresar la matriz A en RStudio***
 ```{r}
@@ -210,6 +215,17 @@ matriz_nula(2,3)
 matriz_nula(5,5)
 matriz_nula(2,6)
 ```
+
+***2.5 Modificar la matriz diag(4), para que se parezca a la matriz B***
+```{r}
+B<-diag(4)
+B[1,1]=0
+B[2,2]=2
+B[3,3]=3
+B[4,4]=4
+B
+```
+
 ***2.6 Obtener la matriz transpuesta de A (ejercicio 2)***
 ```{r}
 (Transpuesta_A <- t(A))
@@ -238,6 +254,19 @@ x <- function(P,n){
 #Consulta
 x(P,6)
 ```
+
+***2.9 Resolver el sistema de ecuaciones:***
+  3x - y + z = -1;
+9x - 2y + z = -9;
+3x + y -2z = -9
+```{r}
+T.D <- matrix(c(3,9,3,-1,-2,1,1,1,-2), ncol=3,nrow=3)
+T.I <- c(-1,-9,-9)
+Solución <- solve(T.D,T.I)
+names(Solución) <- c("x","y","z")
+Solución
+```
+
 ***2.10 Utilizando la ayuda de R, investigue para que sirven las funciones eigen() y det()***
 
   *La función eigen() sirve para calcular valores y vectores propios de una matriz. Esos vectores propios o eigen vectores son los que despues de ser multiplicados por una matriz cuadrada modifican su magnitud pero no su dirección,asi mismo los eigen valores cambian los valores de los eigen vectores.*

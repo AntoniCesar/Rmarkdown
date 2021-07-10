@@ -284,6 +284,14 @@ ascendentecon[1:10]
 (1,1),(2,4),(3,6),(4,8),(5,25),(6,36),(7,49),(8,61),(9,81),(10,100) en
 un plano utilizando RStudio***
 
+``` r
+x<-c(1,2,3,4,5,6,7,8,9,10)
+y<-c(1,4,9,16,25,36,49,64,81,100)
+plot(x,y, main = "Gráfica de Puntos", col = "green", pch = 16,)
+```
+
+![](Readme_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->
+
 ***2.2 Ingresar la matriz A en RStudio***
 
 ``` r
@@ -328,6 +336,23 @@ matriz_nula(2,6)
     ##      [,1] [,2] [,3] [,4] [,5] [,6]
     ## [1,]    0    0    0    0    0    0
     ## [2,]    0    0    0    0    0    0
+
+***2.5 Modificar la matriz diag(4), para que se parezca a la matriz B***
+
+``` r
+B<-diag(4)
+B[1,1]=0
+B[2,2]=2
+B[3,3]=3
+B[4,4]=4
+B
+```
+
+    ##      [,1] [,2] [,3] [,4]
+    ## [1,]    0    0    0    0
+    ## [2,]    0    2    0    0
+    ## [3,]    0    0    3    0
+    ## [4,]    0    0    0    4
 
 ***2.6 Obtener la matriz transpuesta de A (ejercicio 2)***
 
@@ -385,6 +410,20 @@ x(P,6)
     ## [1,] -1792    24 -2824
     ## [2,]  -464 -2416 -1344
     ## [3,]  -648   440  -912
+
+***2.9 Resolver el sistema de ecuaciones:*** 3x - y + z = -1; 9x - 2y +
+z = -9; 3x + y -2z = -9
+
+``` r
+T.D <- matrix(c(3,9,3,-1,-2,1,1,1,-2), ncol=3,nrow=3)
+T.I <- c(-1,-9,-9)
+Solución <- solve(T.D,T.I)
+names(Solución) <- c("x","y","z")
+Solución
+```
+
+    ##  x  y  z 
+    ## -1  2  4
 
 ***2.10 Utilizando la ayuda de R, investigue para que sirven las
 funciones eigen() y det()***

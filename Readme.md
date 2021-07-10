@@ -282,4 +282,16 @@ ascendentecon[1:10]
 
 ***2.1. Graficar los puntos
 (1,1),(2,4),(3,6),(4,8),(5,25),(6,36),(7,49),(8,61),(9,81),(10,100) en
-un plano utilizando RStudio*** \#2.2
+un plano utilizando RStudio***
+
+***2.2 Ingresar la matriz A en RStudio***
+
+``` r
+(A <- matrix(c(1:4, seq(2,8,by = 2),seq(3,12,by = 3)), nrow = 4, ncol = 3))
+```
+
+    ##      [,1] [,2] [,3]
+    ## [1,]    1    2    3
+    ## [2,]    2    4    6
+    ## [3,]    3    6    9
+    ## [4,]    4    8   12

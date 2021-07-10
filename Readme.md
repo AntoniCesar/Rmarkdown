@@ -386,4 +386,59 @@ x(P,6)
     ## [2,]  -464 -2416 -1344
     ## [3,]  -648   440  -912
 
+***12. Considere β =((Xt.X)^-1).Xt.Y*** ***Determine la matriz β***
+
+``` r
+(X <- matrix(c(rep(1,5),1,-1,0,1,2),nrow = 5,ncol = 2))
+```
+
+    ##      [,1] [,2]
+    ## [1,]    1    1
+    ## [2,]    1   -1
+    ## [3,]    1    0
+    ## [4,]    1    1
+    ## [5,]    1    2
+
+``` r
+(Y <- matrix(c(0,0,1,1,3),nrow = 5,ncol = 1))
+```
+
+    ##      [,1]
+    ## [1,]    0
+    ## [2,]    0
+    ## [3,]    1
+    ## [4,]    1
+    ## [5,]    3
+
+``` r
+# Trasnpuesta de la matriz * matriz
+ trasn_x.x <- t(X)%*%X
+
+# Inversa de la multipicación de la matriz y su trasnpuesta
+ (Inversa <- solve(trasn_x.x))
+```
+
+    ##            [,1]       [,2]
+    ## [1,]  0.2692308 -0.1153846
+    ## [2,] -0.1153846  0.1923077
+
+``` r
+# Trasnpuesta de X con el resultado de la inversa
+  (rp <- Inversa%*%t(X))
+```
+
+    ##            [,1]       [,2]       [,3]       [,4]       [,5]
+    ## [1,] 0.15384615  0.3846154  0.2692308 0.15384615 0.03846154
+    ## [2,] 0.07692308 -0.3076923 -0.1153846 0.07692308 0.26923077
+
+``` r
+# Resultado Parcial por la matriz y
+  # Resultado de la matriz β
+  (β <- rp%*%Y)
+```
+
+    ##           [,1]
+    ## [1,] 0.5384615
+    ## [2,] 0.7692308
+
 ### EJERCICIOS PARTE 3

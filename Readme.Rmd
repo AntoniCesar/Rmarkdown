@@ -2,14 +2,14 @@
 title: "6 EJERCICIO"
 output: github_document
 ---
-
-***1.Calcula los valores numéricos aproximados de***
+### EJERCICIOS PARTE 1
+***1.1.Calcula los valores numéricos aproximados de***
 ```{r}
 #a.
 (0.3*0.15)/((0.3*0.15)+(0.2*0.8)+(0.5*0.12)) 
 ```
 
-***2.Realizar las siguientes sumas***
+***1.2.Realizar las siguientes sumas***
 
 a .   1 + 2 + 3 + ....... + 1000
 ```{r}
@@ -24,7 +24,7 @@ for (i in 0:10) {
   aux <- 2^i; r <- c(r, aux)}
 sum(r)
 ```
-***3.El vector grupo representa el grupo al que pertenece una serie de alumnos***
+***1.3 .El vector grupo representa el grupo al que pertenece una serie de alumnos***
 
 a . ¿Cuántos elementos tiene?
 
@@ -50,7 +50,7 @@ which(dfclase$grupo == "A")
 ```
 
 
-***4. El vector nota representa la nota de un examen de los alumnos que están en los grupos del vector grupo.***
+***1.4. El vector nota representa la nota de un examen de los alumnos que están en los grupos del vector grupo.***
 
 a . ¿Cuanto suman todas las notas?
 
@@ -80,7 +80,7 @@ which.max(dfclase$nota)
 
 ```
 
-***5. A partir de los vectores grupo y nota definidos.***
+***1.5. A partir de los vectores grupo y nota definidos.***
 
 a . Suma las notas de los 10 primeros alumnos del vector
 
@@ -127,7 +127,7 @@ mean(aprobadosAB$nota)
 ```
 
 
-***6. Calcula el percentil 66 de las notas de todos los alumnos, y también de los alumnos del grupo C.***
+***1.6. Calcula el percentil 66 de las notas de todos los alumnos, y también de los alumnos del grupo C.***
 
 a. Percentil de todos los alumnos
 
@@ -142,7 +142,7 @@ per66C <- quantile(grupoc$nota, 66/100)
 per66C
 ```
 
-***7. Un alumno tiene una nota de 4.9. ¿Qué porcentaje, del total de alumnos, tiene una nota menor o igual que la suya? ¿Y qué porcentaje tiene una nota mayor o igual que la suya?***
+***1.7. Un alumno tiene una nota de 4.9. ¿Qué porcentaje, del total de alumnos, tiene una nota menor o igual que la suya? ¿Y qué porcentaje tiene una nota mayor o igual que la suya?***
 
 a .  porcentaje de alummnos que tiene nota menor o igual a 4.9
 
@@ -159,7 +159,7 @@ mayor4.9 <- dplyr::filter(dfclase, dfclase$nota >= 4.9)
 (length(mayor4.9$nota)/length(dfclase$nota))*100
 ```
 
-***8. Realiza el gráfico de diagramas de caja de las notas de cada grupo, para poder comparar el nivel de cada uno de ellos.***
+***1.8. Realiza el gráfico de diagramas de caja de las notas de cada grupo, para poder comparar el nivel de cada uno de ellos.***
 
 
 ```{r}
@@ -168,7 +168,7 @@ boxplot(`nota` ~ `grupo`, dfclase, col = palette(rainbow(2)))
 
 
 
-***9. Si la variable conc recoge la concentración de plomo (en ppm) en el aire de cierta zona durante un día completo***
+***1.9. Si la variable conc recoge la concentración de plomo (en ppm) en el aire de cierta zona durante un día completo***
 
 a . ¿Cuál ha sido la concentración máxima?
 
@@ -206,6 +206,10 @@ plot(x,y, main = "Gráfica de Puntos", col = "green", pch = 16,)
 ```{r}
 (A <- matrix(c(1:4, seq(2,8,by = 2),seq(3,12,by = 3)), nrow = 4, ncol = 3))
 ```
+***2.3 Ingresar la matriz identidad de tamaño 3***
+```{r}
+diag(3)
+```
 ***2.4 Crea una función que cree una matriz nula ingresando las dimensiones***
 ```{r}
 matriz_nula <- function(filas,columnas){ 
@@ -230,6 +234,53 @@ B
 ```{r}
 (Transpuesta_A <- t(A))
 ```
+
+***2.7 Realizar las siguientes operaciones A+B, A−B, 3B y AB***
+```{r}
+A <- c(1, 2, 3, 2, 4, 6, 3, 6, 9, 4, 8, 12)
+Z <- c(0)
+matrizA <- matrix(A, nrow = 4, ncol = 3, byrow = T)
+matrizA
+matrizZ <- matrix(Z, nrow = 4, ncol = 1, byrow = T)
+matrizW <- cbind(matrizA, matrizZ)
+matrizW
+Y <- c(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 3)
+matrizY <- matrix(Y, nrow = 4, ncol = 4, byrow = T)
+matrizY
+X <- diag(4)
+suma <- function(X, matrizY){ 
+  B <- X + matrizY
+  return(B)
+}
+suma(X, matrizY)
+B <- X + matrizY
+B
+# W + B
+suma01 <- function(W, B){ 
+  resultado01 <- W + B
+  return(resultado01)
+}
+suma01(matrizW, B)
+# W - B
+resta02 <- function(W, B){ 
+  resultado02 <- W - B
+  return(resultado02)
+}
+resta02(matrizW, B)
+# 3*B
+multiplicacion03 <- function(B){ 
+  resultado03 <- 3*B
+  return(resultado03)
+}
+multiplicacion03(B)
+# W*B
+multiplicacion04 <- function(W,B){ 
+  resultado04 <- W%*%B
+  return(resultado04)
+}
+multiplicacion04(matrizW, B)
+```
+
 ***2.8 Crea una función para calcular P^6***
 ```{r}
 # MATRIZ P
@@ -280,6 +331,28 @@ Solución
 ```
 ```{r}
 (det(M))
+```
+
+***2.11 Considerando las matrices***
+```{r}
+(B <- matrix(c(1:10, seq(2,20,by = 2),seq(3,30,by = 3),seq(4,40,by = 4),
+              seq(5,50,by = 5)) , nrow = 10, ncol = 5))
+dim(B)
+
+(A <- matrix(c(rep(0:1, 7),rep(c(0,0,1), 2),c(1,0,1,1,0)), 
+            nrow = 5, ncol = 5, byrow = T))
+dim(A)
+
+#B.A
+(BA <- B%*%A)#10x5
+#TRANSPUESTA DE B 
+transpuestaB <- t(B)
+transpuestaB #5x10 
+#A*BT
+(resultadoABT <- A%*%transpuestaB)
+t(resultadoABT)
+#AB - A*BT
+(BA - t(resultadoABT))
 ```
 
 ***2.12. Considere β =((Xt.X)^-1).Xt.Y***

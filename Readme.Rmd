@@ -214,6 +214,29 @@ matriz_nula(2,6)
 ```{r}
 (Transpuesta_A <- t(A))
 ```
+***2.8 Crea una función para calcular P^6***
+```{r}
+# MATRIZ P
+(P<-matrix(c(1,-2,1,2,4,0,3,-2,1), ncol=3, nrow=3))
+ P%*%P%*%P%*%P%*%P%*%P
 
+# Función
+ # n es la potencia
+x <- function(P,n){
+  if(dim(P)[2]==dim(P)[1]){
+    aux <- P
+    j <- 1
+    repeat{
+      P <- P%*%aux
+      j <- j+1
+      if(j==n)(break)
+    }
+    P
+  }
+}
+
+#Consulta
+x(P,6)
+```
 
 ### EJERCICIOS PARTE 3

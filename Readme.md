@@ -1,37 +1,6 @@
 6 EJERCICIO
 ================
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax
-for authoring HTML, PDF, and MS Word documents. For more details on
-using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that
-includes both content as well as the output of any embedded R code
-chunks within the document. You can embed an R code chunk like this:
-
-``` r
-summary(cars)
-```
-
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
-
-## Including Plots
-
-You can also embed plots, for example:
-
-![](Readme_files/figure-gfm/pressure-1.png)<!-- -->
-
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
-
 ***2.Realizar las siguientes sumas***
 
 a . 1 + 2 + 3 + ……. + 1000
@@ -165,11 +134,48 @@ length(grupoc$grupo)
 c . ¿Cuántos alumnos han aprobado?
 
 ``` r
-aprobados <- dplyr::filter(dfclase, dfclase$nota > 10.5)
+aprobados <- dplyr::filter(dfclase, dfclase$nota >= 5.5)
 length(aprobados$nota)
 ```
 
-    ## [1] 0
+    ## [1] 73
+
+d . ¿Cuántos alumnos del grupo B han aprobado?
+
+``` r
+GrupoB <- dplyr::filter(aprobados, aprobados$grupo == "B")
+length(GrupoB$nota)
+```
+
+    ## [1] 9
+
+e . ¿Qué porcentaje de alumnos del grupo C han aprobado?
+
+``` r
+AprobadosC <- dplyr::filter(aprobados, aprobados$grupo == "C")
+(length(AprobadosC$nota)/length(dfclase$grupo))*100
+```
+
+    ## [1] 10.41667
+
+f . ¿De qué grupos son la máxima y mínima notas de toda la muestra?
+
+``` r
+max(dfclase$nota)
+```
+
+    ## [1] 7.7
+
+g . Nota media de los alumnos de grupo A y B, juntos, considerando sólo
+a los que han aprobado.
+
+``` r
+aprobadosAB <- dplyr::filter(aprobados, aprobados$grupo == "A" | 
+                               aprobados$grupo == "B")
+mean(aprobadosAB$nota)
+```
+
+    ## [1] 6.109091
 
 ***6. Calcula el percentil 66 de las notas de todos los alumnos, y
 también de los alumnos del grupo C.***
@@ -227,4 +233,42 @@ grupo, para poder comparar el nivel de cada uno de ellos.***
 boxplot(`nota` ~ `grupo`, dfclase, col = palette(rainbow(2)))
 ```
 
-![](Readme_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](Readme_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+
+***9. Si la variable conc recoge la concentración de plomo (en ppm) en
+el aire de cierta zona durante un día completo***
+
+a . ¿Cuál ha sido la concentración máxima?
+
+``` r
+max(conc)
+```
+
+    ## [1] 47.34
+
+b . ¿En cuántos de los muestreos se ha superado la concentración de 40.0
+ppm?
+
+``` r
+mayor40 <- conc[conc > 40]
+length(mayor40)
+```
+
+    ## [1] 61
+
+c . ¿Cuál ha sido la concentración media del día?
+
+``` r
+mean(conc)
+```
+
+    ## [1] 24.07229
+
+d . ¿Cuáles fueron las 10 mediciones más bajas del día?
+
+``` r
+ascendentecon <- sort(conc)
+ascendentecon[1:10]
+```
+
+    ##  [1] 0.93 1.07 1.77 2.03 2.58 2.73 2.75 2.88 2.88 2.91

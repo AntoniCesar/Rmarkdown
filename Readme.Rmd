@@ -3,29 +3,6 @@ title: "6 EJERCICIO"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 ***2.Realizar las siguientes sumas***
 
@@ -115,9 +92,35 @@ length(grupoc$grupo)
 ```
 c . ¿Cuántos alumnos han aprobado?
 ```{r}
-aprobados <- dplyr::filter(dfclase, dfclase$nota > 10.5)
+aprobados <- dplyr::filter(dfclase, dfclase$nota >= 5.5)
 length(aprobados$nota)
 ```
+
+d . ¿Cuántos alumnos del grupo B han aprobado?
+
+```{r}
+GrupoB <- dplyr::filter(aprobados, aprobados$grupo == "B")
+length(GrupoB$nota)
+```
+e . ¿Qué porcentaje de alumnos del grupo C han aprobado?
+
+```{r}
+AprobadosC <- dplyr::filter(aprobados, aprobados$grupo == "C")
+(length(AprobadosC$nota)/length(dfclase$grupo))*100
+```
+f . ¿De qué grupos son la máxima y mínima notas de toda la muestra?
+
+```{r}
+max(dfclase$nota)
+```
+g . Nota media de los alumnos de grupo A y B, juntos, considerando sólo a los que han aprobado.
+
+```{r}
+aprobadosAB <- dplyr::filter(aprobados, aprobados$grupo == "A" | 
+                               aprobados$grupo == "B")
+mean(aprobadosAB$nota)
+```
+
 
 ***6. Calcula el percentil 66 de las notas de todos los alumnos, y también de los alumnos del grupo C.***
 
@@ -156,5 +159,33 @@ mayor4.9 <- dplyr::filter(dfclase, dfclase$nota >= 4.9)
 
 ```{r}
 boxplot(`nota` ~ `grupo`, dfclase, col = palette(rainbow(2)))
+```
+
+
+
+***9. Si la variable conc recoge la concentración de plomo (en ppm) en el aire de cierta zona durante un día completo***
+
+a . ¿Cuál ha sido la concentración máxima?
+
+```{r}
+max(conc)
+```
+b . ¿En cuántos de los muestreos se ha superado la concentración de 40.0 ppm?
+
+```{r}
+mayor40 <- conc[conc > 40]
+length(mayor40)
+```
+c . ¿Cuál ha sido la concentración media del día?
+
+```{r}
+mean(conc)
+
+```
+d . ¿Cuáles fueron las 10 mediciones más bajas del día?
+
+```{r}
+ascendentecon <- sort(conc)
+ascendentecon[1:10]
 ```
 

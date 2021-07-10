@@ -2,7 +2,12 @@
 title: "6 EJERCICIO"
 output: github_document
 ---
-
+***Integrantes***
+Baca Quiñonez, Pedro (17160038)
+Cosios Leona, Jose (17160182)
+Esquivel Guillermo, Antoni (17160183)
+Garro Doroteo, Jamir (17160185)
+Rivera Reaño, Ricardo (17160037)
 
 ***2.Realizar las siguientes sumas***
 

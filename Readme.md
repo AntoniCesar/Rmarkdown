@@ -21,6 +21,7 @@ Rivera Reaño, Ricardo (17160037)
 library(tidyverse)
 library(magrittr)
 library(pacman)
+library(dplyr)
 ```
 
 ***1.1.Calcula los valores numéricos aproximados de***
@@ -31,6 +32,22 @@ library(pacman)
 ```
 
     ## [1] 0.1698113
+
+``` r
+#b.
+(5^6 / factorial(6)) * (exp(1))^(-5)
+```
+
+    ## [1] 0.1462228
+
+``` r
+#c.
+combinatoria <- factorial(20) / (factorial(7) * (factorial(20-7)))
+potencia <- (0.4^7)*(0.6^13)
+(resultado <- combinatoria * potencia)
+```
+
+    ## [1] 0.1658823
 
 ***1.2.Realizar las siguientes sumas***
 
@@ -260,7 +277,7 @@ grupo, para poder comparar el nivel de cada uno de ellos.***
 boxplot(`nota` ~ `grupo`, dfclase, col = palette(rainbow(2)))
 ```
 
-![](Readme_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->
+![](Readme_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
 
 ***1.9. Si la variable conc recoge la concentración de plomo (en ppm) en
 el aire de cierta zona durante un día completo***
@@ -312,7 +329,7 @@ y<-c(1,4,9,16,25,36,49,64,81,100)
 plot(x,y, main = "Gráfica de Puntos", col = "green", pch = 16,)
 ```
 
-![](Readme_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
+![](Readme_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->
 
 ***2.2 Ingresar la matriz A en RStudio***
 
@@ -797,8 +814,8 @@ t(resultadoABT)
     ## [1,] 0.5384615
     ## [2,] 0.7692308
 
-***13. Corre el siguiente código para cargar los vectores year y co2 en
-memoria***
+***2.13. Corre el siguiente código para cargar los vectores year y co2
+en memoria***
 
 ``` r
 data(co2)
@@ -871,17 +888,120 @@ plot(year[39:2],data[1:38,4], xlab = "años", ylab = "Conc",
 main = "Concet. Co2_(años)",type = "o",pch = (16),col = "blue")
 ```
 
-![](Readme_files/figure-gfm/unnamed-chunk-46-1.png)<!-- --> \#La
-diferencia de concentración de CO2 entre 2020 y 2019 fue igual a 2.64.
-Agregar un punto rojo representando esa diferencia al plot ya creado
-(usar una forma diferente, como pch=4)
+![](Readme_files/figure-gfm/unnamed-chunk-48-1.png)<!-- -->
+
+\#La diferencia de concentración de CO2 entre 2020 y 2019 fue igual a
+2.64. Agregar un punto rojo representando esa diferencia al plot ya
+creado (usar una forma diferente, como pch=4)
 
 ``` r
 plot(year[39:2], data$diferencias[1:38] , xlab = "YEAR", ylab = "variacion CO2",main = "Diferencia de CO2 &tiempo", type = "o", pch = 16, xlim = c(1960,2020), ylim =c(0,3)) 
 points(2020, 2.64, pch = 4, col = "green")
 ```
 
-![](Readme_files/figure-gfm/unnamed-chunk-47-1.png)<!-- -->
+![](Readme_files/figure-gfm/unnamed-chunk-49-1.png)<!-- -->
+
+*2.14 - Lee el archivo rainfall.csv como un data frame* *- Calcula e
+imprime un vector con los nombres de las estaciones donde al menos uno
+de los meses tiene una precipitación superior a 180mm*
+
+``` r
+#
+#Cargar el archivo csv como un data.frame
+rainfall <- read.csv("rainfall.csv")
+#Vemos que "rainfall" es un data.frame
+class(rainfall)
+```
+
+    ## [1] "data.frame"
+
+``` r
+#Visualizamos las primeras 6 observaciones y las variables 
+head(rainfall)
+```
+
+    ##      num altitude sep oct nov dec jan feb mar apr may              name
+    ## 1 110050       30 1.2  33  90 117 135 102  61  20 6.7 Kfar Rosh Hanikra
+    ## 2 110351       35 2.3  34  86 121 144 106  62  23 4.5              Saar
+    ## 3 110502       20 2.7  29  89 131 158 109  62  24 3.8             Evron
+    ## 4 111001       10 2.9  32  91 137 152 113  61  21 4.8       Kfar Masrik
+    ## 5 111650       25 1.0  27  78 128 136 108  59  21 4.7     Kfar Hamakabi
+    ## 6 120202        5 1.5  27  80 127 136  95  49  19 2.7        Haifa Port
+    ##      x_utm   y_utm
+    ## 1 696533.1 3660837
+    ## 2 697119.1 3656748
+    ## 3 696509.3 3652434
+    ## 4 696541.7 3641332
+    ## 5 697875.3 3630156
+    ## 6 687006.2 3633330
+
+``` r
+#Usamos la funcion subset para filtrar datos con las condiciones indicadas:
+#Nombres de las estaciones donde al menos uno de los meses tenga una pp > 180 mm
+pp_180 <- subset(rainfall, rainfall$sep > 180 | rainfall$oct > 180 |
+                 rainfall$nov > 180 |rainfall$dec > 180 |
+                 rainfall$jan > 180 |rainfall$feb > 180 |
+                 rainfall$mar > 180 |rainfall$apr > 180 |rainfall$may > 180)
+#Vision previa de las observaciones y variables que cumplen dicha condición
+pp_180
+```
+
+    ##        num altitude sep oct nov dec jan feb mar apr  may       name    x_utm
+    ## 66 2496029      940 1.9  22  86 159 201 196 115  40  9.1 Golan Farm 761589.2
+    ## 71  210748      300 3.7  36 112 160 201 153  92  34  9.5      Eilon 706938.1
+    ## 72  210902      600 2.6  35 106 162 205 179 106  35  7.8    Fasutta 715879.5
+    ## 73  211350      380 2.3  36 115 169 204 160  95  32  9.1     Yehiam 708299.6
+    ## 74  211415      480 3.2  30 112 170 209 183 105  35  8.3 Kfar Mahol 716009.6
+    ## 75  211600      680 2.3  28 100 171 220 192 109  34  7.6      Meron 727711.5
+    ## 77  212168      825 3.4  37 122 202 238 190 114  38 12.2   Horashim 717491.2
+    ##      y_utm
+    ## 66 3669108
+    ## 71 3660756
+    ## 72 3658943
+    ## 73 3653081
+    ## 74 3652743
+    ## 75 3652888
+    ## 77 3648872
+
+``` r
+#Vemos que tipo de estructura tiene
+class(pp_180)
+```
+
+    ## [1] "data.frame"
+
+``` r
+#Creamos un vector para imprimir las estaciones que cumplen la condicion
+#primero, vemos cuantas observaciones son 
+dim(pp_180)
+```
+
+    ## [1]  7 14
+
+``` r
+#vemos que tiene 7 observaciones y 14 variables
+#segundo, seleccionamos la columna numero 12 "name"
+pp_180[12]
+```
+
+    ##          name
+    ## 66 Golan Farm
+    ## 71      Eilon
+    ## 72    Fasutta
+    ## 73     Yehiam
+    ## 74 Kfar Mahol
+    ## 75      Meron
+    ## 77   Horashim
+
+``` r
+#tercero, creamos el vector
+Vestaciones <- c(pp_180[12][1:7,])
+#visualizamos lo requerido
+Vestaciones
+```
+
+    ## [1] "Golan Farm" "Eilon"      "Fasutta"    "Yehiam"     "Kfar Mahol"
+    ## [6] "Meron"      "Horashim"
 
 ### EJERCICIOS PARTE 3
 
@@ -895,22 +1015,135 @@ seq(as.Date("1980-01-01"), as.Date("2013-12-31"), by = "day") %>%
     ## [1] 12419
 
 ``` r
-estaciones <- read.csv("listRaingauge.csv") %>%
-dplyr::filter(NOM_EST == "SAN MIGUEL")
-           
-ppday <- read.csv("raingaugeDataset.csv") %>%
+(estaciones <- read.csv("listRaingauge.csv") %>%
+dplyr::filter(NOM_EST == "SAN MIGUEL"))
+```
+
+    ##   DEPARTAMENTO    NOM_EST     CODIGO      LON      LAT ALT
+    ## 1        PIURA SAN MIGUEL qc00000247 80.68436 5.246203  24
+
+``` r
+(head(data_sm <- read.csv("raingaugeDataset.csv") %>%
 dplyr::select(date, qc00000247) %>%
 mutate(date = as.Date(date, format = "%d/%m/%Y")) %>%
 rename(pp = qc00000247) %>%
-arrange(date)
+arrange(date)))
 ```
 
-a . Determine la cantidad de missing values de la serie de tiempo a paso
-diario.
+    ##         date pp
+    ## 1 1980-01-01  0
+    ## 2 1980-01-02  0
+    ## 3 1980-01-03  0
+    ## 4 1980-01-04  0
+    ## 5 1980-01-05  0
+    ## 6 1980-01-06  0
+
+*a . Determine la cantidad de missing values de la serie de tiempo a
+paso diario.*
 
 ``` r
-missing_values <- sum(is.na(ppday$pp))
-missing_values
+(missing_values_diarios <- sum(is.na(data_sm$pp)))
 ```
 
     ## [1] 608
+
+*b. Calcule la serie de tiempo de precipitación acumulada mensual (si el
+\# de días con missing values, en un mes, supera el 10%, la
+precipitación acumulada mensual será considerado como un NA).*
+
+``` r
+ppMonthly <- 
+  data_sm %>%
+  group_by(date = str_sub(date,1 , 7)) %>%
+  mutate(
+    missval = sum(is.na(pp))*100/n()
+  ) %>%
+  summarize(
+    pp = sum(pp, na.rm = T),
+    missval = unique(missval)
+  )  %>%
+  mutate(
+    pp = ifelse(missval >= 10, NA, pp),
+    date = as.Date(sprintf("%1$s-01",date)),
+    month=str_sub(date,6,7)
+  )
+ppMonthly
+```
+
+    ## # A tibble: 408 x 4
+    ##    date          pp missval month
+    ##    <date>     <dbl>   <dbl> <chr>
+    ##  1 1980-01-01  0          0 01   
+    ##  2 1980-02-01  1.9        0 02   
+    ##  3 1980-03-01  8.23       0 03   
+    ##  4 1980-04-01  0          0 04   
+    ##  5 1980-05-01  0.01       0 05   
+    ##  6 1980-06-01  0          0 06   
+    ##  7 1980-07-01  0.01       0 07   
+    ##  8 1980-08-01  0.01       0 08   
+    ##  9 1980-09-01  0          0 09   
+    ## 10 1980-10-01  0.01       0 10   
+    ## # ... with 398 more rows
+
+``` r
+ggplot(ppMonthly, aes(date,pp)) +
+ geom_line(color = "green") +
+  labs(y="pp (mm)", x ="Años")
+```
+
+![](Readme_files/figure-gfm/unnamed-chunk-56-1.png)<!-- -->
+
+*c.Determine la cantidad de missing values de la serie de tiempo a paso
+mensual.*
+
+``` r
+(missing_values_mensual <- sum(is.na(ppMonthly$pp)))
+```
+
+    ## [1] 21
+
+*d. Cree una función que calcule, a partir de los datos de preicpitación
+mensual, la climatología (Ene-Dic) para el período 1980-2010.*
+
+``` r
+climatologia <- function(data_sm){
+  periodo <- filter(data_sm, date >= "1980-01-01" & date <="2010-12-31")
+  meses <- group_by(periodo, month)
+  media <- summarise(meses, ppmean= mean(pp, na.rm = T))
+  return (media)
+}
+
+climatologia(ppMonthly)
+```
+
+    ## # A tibble: 12 x 2
+    ##    month  ppmean
+    ##    <chr>   <dbl>
+    ##  1 01    24.2   
+    ##  2 02    32.6   
+    ##  3 03    41.4   
+    ##  4 04    33.1   
+    ##  5 05    12.5   
+    ##  6 06     4.68  
+    ##  7 07     0.0583
+    ##  8 08     0.0211
+    ##  9 09     0.120 
+    ## 10 10     0.681 
+    ## 11 11     1.11  
+    ## 12 12     5.95
+
+*e. Plotear (boxplot) la variabilidad de los valores mensuales (Ene-Dic)
+para el período 1980-2013.*
+
+``` r
+ggplot(ppMonthly, aes(month, pp))+
+  geom_boxplot(fill="green")+
+  theme_bw() +
+  scale_x_discrete(
+    labels =month.abb
+  )
+```
+
+    ## Warning: Removed 21 rows containing non-finite values (stat_boxplot).
+
+![](Readme_files/figure-gfm/unnamed-chunk-59-1.png)<!-- -->

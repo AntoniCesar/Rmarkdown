@@ -2,17 +2,21 @@
 title: "6 EJERCICIO"
 output: github_document
 ---
-<<<<<<< HEAD
-***Integrantes***
+### INTEGRANTES
+
 Baca Quiñonez, Pedro (17160038)
+
 Cosios Leona, Jose (17160182)
+
 Esquivel Guillermo, Antoni (17160183)
+
 Garro Doroteo, Jamir (17160185)
+
 Rivera Reaño, Ricardo (17160037)
 
-***2.Realizar las siguientes sumas***
-=======
+
 ### EJERCICIOS PARTE 1
+
 ***1.1.Calcula los valores numéricos aproximados de***
 ```{r}
 #a.
@@ -20,7 +24,6 @@ Rivera Reaño, Ricardo (17160037)
 ```
 
 ***1.2.Realizar las siguientes sumas***
->>>>>>> 05a5470b9d27efa915f5286586f95fe42bf1bd7a
 
 a .   1 + 2 + 3 + ....... + 1000
 ```{r}

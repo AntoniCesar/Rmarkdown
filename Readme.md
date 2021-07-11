@@ -1,6 +1,18 @@
 6 EJERCICIO
 ================
 
+### INTEGRANTES
+
+Baca Quiñonez, Pedro (17160038)
+
+Cosios Leona, Jose (17160182)
+
+Esquivel Guillermo, Antoni (17160183)
+
+Garro Doroteo, Jamir (17160185)
+
+Rivera Reaño, Ricardo (17160037)
+
 ### EJERCICIOS PARTE 1
 
 ***1.1.Calcula los valores numéricos aproximados de***
@@ -193,6 +205,8 @@ también de los alumnos del grupo C.***
 
 1.  Percentil de todos los alumnos
 
+<!-- end list -->
+
 ``` r
 percentil <- quantile(dfclase$nota, 66/100)
 percentil
@@ -202,6 +216,8 @@ percentil
     ## 5.5
 
 2.  Percentil de todos los alumnos del grupo C
+
+<!-- end list -->
 
 ``` r
 per66C <- quantile(grupoc$nota, 66/100)

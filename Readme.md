@@ -15,6 +15,14 @@ Rivera Reaño, Ricardo (17160037)
 
 ### EJERCICIOS PARTE 1
 
+***Antes tenemos que cargar las librerias que utilizaremos***
+
+``` r
+library(tidyverse)
+library(magrittr)
+library(pacman)
+```
+
 ***1.1.Calcula los valores numéricos aproximados de***
 
 ``` r
@@ -256,7 +264,7 @@ grupo, para poder comparar el nivel de cada uno de ellos.***
 boxplot(`nota` ~ `grupo`, dfclase, col = palette(rainbow(2)))
 ```
 
-![](Readme_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+![](Readme_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->
 
 ***1.9. Si la variable conc recoge la concentración de plomo (en ppm) en
 el aire de cierta zona durante un día completo***
@@ -308,7 +316,7 @@ y<-c(1,4,9,16,25,36,49,64,81,100)
 plot(x,y, main = "Gráfica de Puntos", col = "green", pch = 16,)
 ```
 
-![](Readme_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->
+![](Readme_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
 
 ***2.2 Ingresar la matriz A en RStudio***
 
@@ -794,3 +802,33 @@ t(resultadoABT)
     ## [2,] 0.7692308
 
 ### EJERCICIOS PARTE 3
+
+**15.Manipule los dataframe segun se solicite**
+
+``` r
+seq(as.Date("1980-01-01"), as.Date("2013-12-31"), by = "day") %>%
+      length()
+```
+
+    ## [1] 12419
+
+``` r
+estaciones <- read.csv("listRaingauge.csv") %>%
+dplyr::filter(NOM_EST == "SAN MIGUEL")
+           
+ppday <- read.csv("raingaugeDataset.csv") %>%
+dplyr::select(date, qc00000247) %>%
+mutate(date = as.Date(date, format = "%d/%m/%Y")) %>%
+rename(pp = qc00000247) %>%
+arrange(date)
+```
+
+a . Determine la cantidad de missing values de la serie de tiempo a paso
+diario.
+
+``` r
+missing_values <- sum(is.na(ppday$pp))
+missing_values
+```
+
+    ## [1] 608

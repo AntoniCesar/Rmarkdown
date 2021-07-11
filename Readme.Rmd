@@ -15,7 +15,16 @@ Garro Doroteo, Jamir (17160185)
 Rivera Reaño, Ricardo (17160037)
 
 
+
+
 ### EJERCICIOS PARTE 1
+
+***Antes tenemos que cargar las librerias que utilizaremos***
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(magrittr)
+library(pacman)
+```
 
 ***1.1.Calcula los valores numéricos aproximados de***
 ```{r}
@@ -391,3 +400,30 @@ t(resultadoABT)
 ```
 
 ### EJERCICIOS PARTE 3
+
+**15.Manipule los dataframe segun se solicite**
+
+
+```{r}
+seq(as.Date("1980-01-01"), as.Date("2013-12-31"), by = "day") %>%
+      length()
+```
+
+```{r}
+estaciones <- read.csv("listRaingauge.csv") %>%
+dplyr::filter(NOM_EST == "SAN MIGUEL")
+           
+ppday <- read.csv("raingaugeDataset.csv") %>%
+dplyr::select(date, qc00000247) %>%
+mutate(date = as.Date(date, format = "%d/%m/%Y")) %>%
+rename(pp = qc00000247) %>%
+arrange(date)
+
+```
+
+a . Determine la cantidad de missing values de la serie de tiempo a paso diario.
+
+```{r}
+missing_values <- sum(is.na(ppday$pp))
+missing_values
+```

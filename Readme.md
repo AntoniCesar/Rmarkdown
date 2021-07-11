@@ -213,8 +213,6 @@ también de los alumnos del grupo C.***
 
 1.  Percentil de todos los alumnos
 
-<!-- end list -->
-
 ``` r
 percentil <- quantile(dfclase$nota, 66/100)
 percentil
@@ -224,8 +222,6 @@ percentil
     ## 5.5
 
 2.  Percentil de todos los alumnos del grupo C
-
-<!-- end list -->
 
 ``` r
 per66C <- quantile(grupoc$nota, 66/100)
@@ -800,6 +796,92 @@ t(resultadoABT)
     ##           [,1]
     ## [1,] 0.5384615
     ## [2,] 0.7692308
+
+***13. Corre el siguiente código para cargar los vectores year y co2 en
+memoria***
+
+``` r
+data(co2)
+means = aggregate(co2, FUN=mean)
+year = as.vector(time(means))
+co2 = as.vector(means)
+```
+
+\#El vector co2 contiene medidas de CO2 en la atmósfera, en unidades de
+ppm, durante el periodo 1959-1997. El vector year contiene sus años
+correspondientes. \# Calcular un vector de diferencias de CO2 entre años
+consecutivos, que sería: \# CO2en 1960 menos CO2 en 1959 \# CO2 en 1961
+menos  
+\# CO2 en 1960 y así sucesivamente
+
+``` r
+data <- data.frame( años=year, conce = round(co2,1)) %>% 
+  arrange(desc(años)) %>% 
+  mutate( concant = c(conce[2:39],0)) %>% 
+  mutate( diferencias = conce - concant) 
+data
+```
+
+    ##    años conce concant diferencias
+    ## 1  1997 363.8   362.7         1.1
+    ## 2  1996 362.7   360.9         1.8
+    ## 3  1995 360.9   358.9         2.0
+    ## 4  1994 358.9   357.0         1.9
+    ## 5  1993 357.0   356.3         0.7
+    ## 6  1992 356.3   355.5         0.8
+    ## 7  1991 355.5   354.0         1.5
+    ## 8  1990 354.0   352.8         1.2
+    ## 9  1989 352.8   351.3         1.5
+    ## 10 1988 351.3   348.8         2.5
+    ## 11 1987 348.8   347.0         1.8
+    ## 12 1986 347.0   345.7         1.3
+    ## 13 1985 345.7   344.2         1.5
+    ## 14 1984 344.2   342.6         1.6
+    ## 15 1983 342.6   341.0         1.6
+    ## 16 1982 341.0   339.8         1.2
+    ## 17 1981 339.8   338.5         1.3
+    ## 18 1980 338.5   336.7         1.8
+    ## 19 1979 336.7   335.3         1.4
+    ## 20 1978 335.3   333.7         1.6
+    ## 21 1977 333.7   332.0         1.7
+    ## 22 1976 332.0   331.0         1.0
+    ## 23 1975 331.0   330.1         0.9
+    ## 24 1974 330.1   329.5         0.6
+    ## 25 1973 329.5   327.3         2.2
+    ## 26 1972 327.3   326.2         1.1
+    ## 27 1971 326.2   325.5         0.7
+    ## 28 1970 325.5   324.5         1.0
+    ## 29 1969 324.5   322.9         1.6
+    ## 30 1968 322.9   322.0         0.9
+    ## 31 1967 322.0   321.2         0.8
+    ## 32 1966 321.2   319.9         1.3
+    ## 33 1965 319.9   319.5         0.4
+    ## 34 1964 319.5   318.8         0.7
+    ## 35 1963 318.8   318.3         0.5
+    ## 36 1962 318.3   317.5         0.8
+    ## 37 1961 317.5   316.7         0.8
+    ## 38 1960 316.7   315.8         0.9
+    ## 39 1959 315.8     0.0       315.8
+
+\#Crear un plot con lineas y puntos mostrando las diferencias
+consecutivas de CO2 en función del tiempo (1960, 1961, etc…), en negrita
+
+``` r
+plot(year[39:2],data[1:38,4], xlab = "años", ylab = "Conc",
+main = "Concet. Co2_(años)",type = "o",pch = (16),col = "blue")
+```
+
+![](Readme_files/figure-gfm/unnamed-chunk-46-1.png)<!-- --> \#La
+diferencia de concentración de CO2 entre 2020 y 2019 fue igual a 2.64.
+Agregar un punto rojo representando esa diferencia al plot ya creado
+(usar una forma diferente, como pch=4)
+
+``` r
+plot(year[39:2], data$diferencias[1:38] , xlab = "YEAR", ylab = "variacion CO2",main = "Diferencia de CO2 &tiempo", type = "o", pch = 16, xlim = c(1960,2020), ylim =c(0,3)) 
+points(2020, 2.64, pch = 4, col = "green")
+```
+
+![](Readme_files/figure-gfm/unnamed-chunk-47-1.png)<!-- -->
 
 ### EJERCICIOS PARTE 3
 
